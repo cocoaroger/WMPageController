@@ -550,6 +550,13 @@ static NSInteger const WMBadgeViewTagOffset = 1212;
         }
     }
     
+    if (self.selItem == menuItem) {
+        if ([self.delegate respondsToSelector:@selector(menuView:doubleClickedIndex:)]) {
+            [self.delegate menuView:self doubleClickedIndex:menuItem.tag-WMMenuItemTagOffset]; // roger add
+        }
+        return;
+    }
+    
     CGFloat progress = menuItem.tag - WMMenuItemTagOffset;
     [self.progressView moveToPostion:progress];
     
